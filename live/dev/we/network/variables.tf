@@ -17,9 +17,3 @@ variable "environment" {
   description = "environment used as a prefix but also to look up environemnt specific values. Possible values: dev, prod"
   type        = string
 }
-
-variable "vm_size" {
-  description = "Size of the VM to create"
-  type = string
-  default = "B1s"
-}

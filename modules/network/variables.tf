@@ -13,22 +13,6 @@ variable "environment" {
   type        = string
 }
 
-variable "subnet_id" {
-  description = "Full resource ID of the subnet we want to connect the NIC to"
-  type = string
-}
-
-variable "resource_name" {
-  description = "Name/type of the resource we are creating, this will be used for creating all components"
-  type = string
-}
-
 variable "resource_group" {
   description = "Resource group the network components should belong to"
-}
-
-variable "vm_size" {
-  description = "Size of the VM to create"
-  type        = string
-  default     = "B1s"
 }
