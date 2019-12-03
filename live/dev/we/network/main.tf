@@ -1,3 +1,7 @@
+locals {
+  area = "${var.environment}-${var.location}"
+}
+
 # The provider to use
 provider "azurerm" {
   subscription_id = var.subscription_id
@@ -12,7 +16,5 @@ module "network" {
   location      = var.location
   location_full = var.location_full
   environment   = var.environment
-
-  resource_group = "rg-${var.environment}-${var.location}-network"
 }
 

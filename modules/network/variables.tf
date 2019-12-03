@@ -12,7 +12,3 @@ variable "environment" {
   description = "environment used as a prefix but also to look up environemnt specific values. Possible values: dev, prod"
   type        = string
 }
-
-variable "resource_group" {
-  description = "Resource group the network components should belong to"
-}

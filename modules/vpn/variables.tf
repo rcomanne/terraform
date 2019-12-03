@@ -18,6 +18,11 @@ variable "subnet_id" {
   type = string
 }
 
+variable "nsg_id" {
+  description = "Full resource ID of the NSG we want to be a part of"
+  type = string
+}
+
 variable "resource_name" {
   description = "Name/type of the resource we are creating, this will be used for creating all components"
   type = string
@@ -30,5 +35,11 @@ variable "resource_group" {
 variable "vm_size" {
   description = "Size of the VM to create"
   type        = string
-  default     = "B1s"
+  default     = "Standard_B1s"
+}
+
+variable "vm_count" {
+  description = "Total number of VM/resources to create"
+  type = number
+  default = 1
 }

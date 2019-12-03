@@ -28,6 +28,29 @@ $ az account list # Shows available subscripts
 $ az account set --subscription <subscription-id>
 ```
 
+### Set environment
+Unfortunately, I need the subscription ID for some of the full IDs - ex. vnet/subnet.
+To do this, I made a simple export script that you can fill - and then source - to include all the required variables.
+The example is found - unfilled - at the root of this project as `set-env.sh-sample`
+```bash
+# In the root dir of the project
+$ cp set-env.sh-sample set-env.sh
+# Fill the variables with your own credentials
+$ source set-env.sh
+```
+
+### Ensure KeyVault exists with required data
+I use an Azure Key Vault to store some sensitive data, like auth credentials.
+However, I do not have this set to create (yet) - so you will have to make sure it exists before running Terraform.
+The KeyVault required depends on the environment you are running in/on.
+For me, the Key Vault looks like this:
+`resource-group: rg-dev-we-vaults`
+`name: vault-terraform`  
+You should be able to follow the pattern `rg-ENV-LOCATION-vaults` and get it working.  
+Fill the vault with these secrets:
+`admin-username`
+`admin-pub-key`
+
 ### Run Terraform  
 To create a desired plan and/or apply the desired situation, you should follow these steps
 Find which one you want to run, for this example I will plan and apply the Network state

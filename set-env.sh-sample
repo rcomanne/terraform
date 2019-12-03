@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# To set the correct credentials, we can use shell credentials as well
+export TF_VAR_subscription_id="YOUR SUBSCRIPTION ID"

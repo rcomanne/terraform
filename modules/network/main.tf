@@ -1,9 +1,9 @@
-provider "azurerm" {
-  version = "1.37"
+locals {
+  resource_group = "rg-${var.environment}-${var.location}-network"
 }
 
 resource "azurerm_resource_group" "rg-network" {
-  name     = var.resource_group
+  name     = local.resource_group
   location = var.location_full
 }
 
@@ -11,7 +11,7 @@ resource "azurerm_virtual_network" "vnet-rcomanne" {
   name                = "vnet-rcomanne"
   address_space       = ["10.0.0.0/16"]
   location            = var.location_full
-  resource_group_name = var.resource_group
+  resource_group_name = local.resource_group
 
   tags = {
     environment = "Terraform Test"
@@ -22,17 +22,17 @@ resource "azurerm_virtual_network" "vnet-rcomanne" {
 
 resource "azurerm_subnet" "subnet-rcomanne" {
   name                 = "subnet-rcomanne"
-  resource_group_name  = var.resource_group
+  resource_group_name  = local.resource_group
   virtual_network_name = azurerm_virtual_network.vnet-rcomanne.name
   address_prefix       = "10.0.2.0/24"
 
   depends_on = [azurerm_resource_group.rg-network]
 }
 
-resource "azurerm_network_security_group" "myterraformnsg" {
+resource "azurerm_network_security_group" "nsg-rcomanne" {
   name                = "nsg-rcomanne"
   location            = var.location_full
-  resource_group_name = var.resource_group
+  resource_group_name = local.resource_group
 
   security_rule {
     name                       = "SSH"
