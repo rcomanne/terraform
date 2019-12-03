@@ -71,3 +71,4 @@ fabric.properties
 # example.tfvars
 
 # To prevent comitting your variables
+set-env.sh
